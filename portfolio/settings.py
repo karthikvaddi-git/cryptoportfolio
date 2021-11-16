@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'portfoliotracker',
     'django_celery_results',
     'django_celery_beat',
-    'channels'
+    'channels',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

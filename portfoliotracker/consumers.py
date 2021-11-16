@@ -22,6 +22,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
         )
         print("hello disconnected from chat app ")
 
+    async def send_notification(self, event):
+
+        message = json.loads(event['message'])
+
+        # Send message to WebSocket
+        await self.send(text_data=json.dumps(message))
+
 
 
 

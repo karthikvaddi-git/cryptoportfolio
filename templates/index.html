@@ -62,11 +62,33 @@
                 + '/ws/check/'
 
             );
+
+
+
 chatSocket.onopen=function(e)
 {
 alert("Hello! I am an alert box!!");
 
 }
+
+
+
+  chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            //document.querySelector('#chat-log').value += (data.message + '\n');
+            console.log(data);
+            alert(data);
+
+
+
+           alert(data[0]['fields']['name']);
+
+
+        }
+
+
+
+
 
   chatSocket.onclose = function(e) {
                 alert('The socket close unexpectadly');

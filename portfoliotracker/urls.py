@@ -4,5 +4,6 @@ from portfoliotracker import views as s
 urlpatterns = [
 
     path('',s.index),
+    path('test/',s.test)
 
 ]
