@@ -3,11 +3,14 @@ from portfolio import settings
 from celery import shared_task
 from celery import shared_task
 from .models import Test, Position
+import json
 #from .utils import get_random_code
-
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 #from celery.decorators import periodic_task
 #from celery.task.schedules import crontab
 import requests
+from django.core import serializers
 
 
 @shared_task
@@ -23,5 +26,23 @@ def get_crypto_data():
         p.rank = item['market_cap_rank']
         p.market_cap = item['market_cap']
         p.save()
+
+
+    data1 = Position.objects.all()
+
+    print("\n")
+
+    data = serializers.serialize("json", data1)
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+        "checking",
+        {
+            'type': 'send_message',
+            'message':data,
+        }
+    )
+
+
+
 
 

@@ -73,5 +73,31 @@ alert("Hello! I am an alert box!!");
             };
 
 
+
+   chatSocket.onmessage = function(event) {
+     const data = JSON.parse(event.data);
+     console.log(event);
+     console.log(data);
+     const temp=data[0];
+     for(let i=0;i<100;i++)
+{
+     console.log(data[i]['fields']['name']);
+}
+    // console.log(data);
+      const data1 = JSON.parse(event.data);
+            //document.querySelector('#chat-log').value += (data.message + '\n');
+        //    console.log(data1);
+         //   alert(data1);
+
+
+
+
+
+
+
+};
+
+
+
 </script>
 {% endblock scripts %}
