@@ -38,11 +38,11 @@
             {% if data %}
                 {% for obj in data %}
                     <tr>
-                        <td><img src={{obj.image}} height='70'></td>
-                        <td class="align-middle">{{obj.name}}</td>
-                        <td class="align-middle">{{obj.rank}}</td>
-                        <td class="align-middle">{{obj.market_cap}}</td>
-                        <td class="align-middle">{{obj.price}}</td>
+                        <td id='data'><img src={{obj.image}} height='70'></td>
+                        <td id='data' class="align-middle">{{obj.name}}</td>
+                        <td id='data' class="align-middle">{{obj.rank}}</td>
+                        <td id='data' class="align-middle">{{obj.market_cap}}</td>
+                        <td id='data' class="align-middle">{{obj.price}}</td>
                     </tr>
                 {% endfor %}
             {% else %}
@@ -79,9 +79,15 @@ alert("Hello! I am an alert box!!");
      console.log(event);
      console.log(data);
      const temp=data[0];
+     const fields = document.querySelectorAll('#data');
      for(let i=0;i<100;i++)
 {
      console.log(data[i]['fields']['name']);
+  fileds[0].innerText = data[i]['fields']['image'];
+  fileds[1].innerText = data[i]['fields']['name'];
+  fileds[2].innerText = data[i]['fields']['rank'];
+  fileds[3].innerText = data[i]['fields']['market_cap'];
+  fileds[4].innerText = data[i]['fields']['price'];
 }
     // console.log(data);
       const data1 = JSON.parse(event.data);
