@@ -34,10 +34,10 @@
                 <th scope='col'>Price</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody  class="tb">
             {% if data %}
                 {% for obj in data %}
-                    <tr>
+                    <tr  class="trow">
                         <td id='data'><img src={{obj.image}} height='70'></td>
                         <td id='data' class="align-middle">{{obj.name}}</td>
                         <td id='data' class="align-middle">{{obj.rank}}</td>
@@ -80,15 +80,20 @@ alert("Hello! I am an alert box!!");
      console.log(data);
      const temp=data[0];
      const fields = document.querySelectorAll('#data');
-     for(let i=0;i<100;i++)
-{
-     console.log(data[i]['fields']['name']);
-  fileds[0].innerText = data[i]['fields']['image'];
-  fileds[1].innerText = data[i]['fields']['name'];
-  fileds[2].innerText = data[i]['fields']['rank'];
-  fileds[3].innerText = data[i]['fields']['market_cap'];
-  fileds[4].innerText = data[i]['fields']['price'];
-}
+     
+      const cols = ['image', 'name', 'rank', 'market_cap', 'price'];
+      const tb = document.querySelector('.tb');
+      for (let i = 0; i < 100; i++) {
+        const trow = document.createElement('tr');
+        console.log(data[i]['fields']['name']);
+
+        for (let j = 0; j < 5; j++) {
+          const tdata = document.createElement('td');
+          tdata.innerText = data[i]['fields'][cols[j]];
+          trow.appendChild(tdata);
+        }
+        tb.appendChild(trow);
+      }
     // console.log(data);
       const data1 = JSON.parse(event.data);
             //document.querySelector('#chat-log').value += (data.message + '\n');
